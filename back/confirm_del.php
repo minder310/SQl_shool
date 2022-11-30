@@ -1,4 +1,4 @@
-<!-- 刪除資料庫資料用軟體。 -->
+<!-- 刪除資料庫資料用學生資料。 -->
 <?php
 $student = $pdo->query("SELECT * FROM `students` WHERE `id`='{$_GET['id']}'")
 // 從students取出資料，where取出$_GET帶值的ID所有資料。

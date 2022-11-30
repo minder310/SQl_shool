@@ -1,3 +1,4 @@
+<!-- 新增學生資料。 -->
 <div class='col-md-6 mx-auto my-3 px-5 py-3 border shadow-sm'>
     <h3 class="text-center">新增學生</h3>
 

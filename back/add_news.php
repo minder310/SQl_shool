@@ -1,3 +1,4 @@
+<!-- 新增最新新聞。 -->
 <h1 class="text-center">新增消息</h1>
 <form action="../api/add_news.php" method="POST">
     <div class="form-group row">
