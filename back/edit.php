@@ -26,6 +26,7 @@ if(isset($_GET['id'])){
     <div class="form-group row">
         <label class="col-form-label col-md-4" style="text-align-last:justify">生日</label>
         <input class="form-control col-md-8" type="date" name="birthday" value="<?=$student['birthday'];?>">
+        <!--  -->
     </div>
     <div class="form-group row">
         <label class="col-form-label col-md-4" style="text-align-last:justify">身份證字號</label>
@@ -46,3 +47,29 @@ if(isset($_GET['id'])){
     <div class="form-group row">
         <label class="col-form-label col-md-4" style="text-align-last:justify">科系</label>
             <select class="form-control col-md-8" name="dept">
+    </div>
+    <div>
+        <label class="col-form-lebel col-md-4" style="text-align-last:justify">科系</label>
+        <select name="form-control col-md-8" name="dept">
+            <?php
+            $sql="SELECT * FROM `dept`";
+            // 宣告一個SQL取出dept資料語法。
+            $depts=$pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
+            // query($sql)取出，所有結果fetchALL
+            foreach($depts as $dept){
+                
+                $selected=($dept['id']==$student['dept'])?'selected':'';
+                // 要是id==dept，輸出selected要是為否輸出空值。
+                echo "<option value='{$dept['id']}' $selected>{$dept['name']}</option>";
+                // 輸出，value的id，並且要是預設輸出為一樣的值，時設為預設選項。
+            }
+            ?>
+        </select>
+        <div class="form-group row">
+        <label class="col-form-label col-md-4" style="text-align-last:justify">班級</label>
+        <select class="form-control col-md-8" name="class_code">
+            <?php
+            $stu_class=$pdo->query()
+            
+            ?>
+    </div>
