@@ -1,13 +1,12 @@
 <?php
+//因為session_start()太常用，所以移到base.php中,並且把include base.php放在檔案的最前面來引入
 include "./db/base.php";
-// 導入session.start，並且調整時間。
 
-if(!isset($_SESSION['login'])){// 宣告一個$_SESSION['login']，當裡面沒有值。
+if(!isset($_SESSION['login'])){
     header("location:index.php");
-    // 將他導回index.php，這裡是一個判斷式，以阻絕非法登陸。
     exit();
-    // 終止腳本執行。(不讓他往下跑的意思。)
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,26 +20,21 @@ if(!isset($_SESSION['login'])){// 宣告一個$_SESSION['login']，當裡面沒�
 
 </head>
 <body>
-    <?php
-    // 上面標籤。
-     include "./layouts/header.php";
-    // 在這裡貼上header.php，顯示選單列表，以判斷資料夾的方式決定要顯示什麼。
-    ?>
-    <main class="container">
-    <?php
-    $do=$_GET['do']??'main';
-    // 當$_GET['do']為空值時，陣列['do']=main；
-    $file='./back'.$do.".php";    
-    // ./back都是後台管理系統。
-    if(file_exists($file)){
-        // file_exists(字串)判斷檔案是否存在。如果存在。
-        include $file;
-    }else{
-        include "./back/main.php";
-    }
-    ?>
-    </main>
-    <?php include "./layouts/scripts.php"; ?>
-    <!-- 導入js和結尾 -->
+<?php
+    include "./layouts/header.php";
+?>
+<main class="container">
+<?php
+$do=$_GET['do']??'main';
+$file='./back/'.$do.".php";
+//echo $file;
+if(file_exists($file)){
+    include $file;
+}else{
+    include "./back/main.php";
+}
+?>
+</main>
+<?php include "./layouts/scripts.php";?>
 </body>
 </html>
